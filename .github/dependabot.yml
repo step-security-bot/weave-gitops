@@ -104,3 +104,8 @@ updates:
     groups:
       all-pip:
         patterns: ["*"]
+
+  - package-ecosystem: docker
+    directory: /website
+    schedule:
+      interval: daily

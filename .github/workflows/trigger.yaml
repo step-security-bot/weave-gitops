@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     if: "${{ github.repository_owner == 'weaveworks' && github.ref_name == 'main'}}"
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@c6295a65d1254861815972266d5933fd6e532bdf # v2.11.1
+        with:
+          egress-policy: audit
+
       - name: Trigger Workflow
         uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0 # v3.0.0
         with:
